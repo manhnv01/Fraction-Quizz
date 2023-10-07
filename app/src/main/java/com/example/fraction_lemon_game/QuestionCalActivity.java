@@ -134,6 +134,7 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                 }
                 btnCheck.setVisibility(View.GONE);
                 disable();
+                disableRB();
 
                 if(ansTextTS.equals(answerTS[flag]) && ansTextMS.equals(answerMS[flag])) {
                     correct++;
@@ -190,6 +191,7 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                 llAnswerD.setBackgroundResource(R.drawable.back_answer);
                 imvButton.setImageResource(R.drawable.lemon);
                 enable();
+                enableRB();
                 if(flag < 5)
                 {
                     if(cal == 6 && flag == 1){
@@ -319,6 +321,11 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
         rb2 = findViewById(R.id.radioButton2);
         rb3 = findViewById(R.id.radioButton3);
         rb4 = findViewById(R.id.radioButton4);
+
+        rb1.setOnClickListener(this);
+        rb2.setOnClickListener(this);
+        rb3.setOnClickListener(this);
+        rb4.setOnClickListener(this);
 
         llPSA = findViewById(R.id.llPSA);
         llPSB = findViewById(R.id.llPSB);
@@ -524,6 +531,19 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
         llAnswerB.setClickable(true);
         llAnswerC.setClickable(true);
         llAnswerD.setClickable(true);
+    }
+
+    private void disableRB(){
+        rb1.setClickable(false);
+        rb2.setClickable(false);
+        rb3.setClickable(false);
+        rb4.setClickable(false);
+    }
+    private void enableRB(){
+        rb1.setClickable(true);
+        rb2.setClickable(true);
+        rb3.setClickable(true);
+        rb4.setClickable(true);
     }
 
     private void setTextQuestion(){
