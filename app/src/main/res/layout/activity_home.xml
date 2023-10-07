@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_10sdp"
+    android:background="#FCFCE7"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/llStart"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="230dp"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_gravity="center"
+                        android:layout_width="158dp"
+                        android:layout_height="158dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginEnd="12dp"
+                        android:maxWidth="18dip"
+                        android:maxHeight="18dip"
+                        android:minWidth="18dip"
+                        android:minHeight="18dip"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="3dp"
+                        app:layout_constraintWidth_min="wrap">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="80dp"
+                            android:padding="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="KHỞI ĐỘNG"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <RatingBar
+                                android:id="@+id/rtStart"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:isIndicator="true"
+                                android:max="5"
+                                android:progressTint="#FBD057"
+                                android:rating="0"
+                                android:stepSize="1"
+                                android:scaleX="1.2"
+                                android:scaleY="1.2" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-215dp"
+                        android:src="@drawable/lemon_1"
+                        android:translationZ="100dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llSum"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="230dp"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_gravity="center"
+                        android:layout_width="158dp"
+                        android:layout_height="158dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginEnd="12dp"
+                        android:maxWidth="18dip"
+                        android:maxHeight="18dip"
+                        android:minWidth="18dip"
+                        android:minHeight="18dip"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="3dp"
+                        app:layout_constraintWidth_min="wrap">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="80dp"
+                            android:padding="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PHÉP CỘNG"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <RatingBar
+                                android:id="@+id/rtSum"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:isIndicator="true"
+                                android:max="5"
+                                android:progressTint="#FBD057"
+                                android:rating="0"
+                                android:stepSize="1"
+                                android:scaleX="1.2"
+                                android:scaleY="1.2" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-215dp"
+                        android:src="@drawable/lemon_2"
+                        android:translationZ="100dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/llSub"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="230dp"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_gravity="center"
+                        android:layout_width="158dp"
+                        android:layout_height="158dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginEnd="12dp"
+                        android:maxWidth="18dip"
+                        android:maxHeight="18dip"
+                        android:minWidth="18dip"
+                        android:minHeight="18dip"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="3dp"
+                        app:layout_constraintWidth_min="wrap">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="80dp"
+                            android:padding="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PHÉP TRỪ"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <RatingBar
+                                android:id="@+id/rtSub"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:isIndicator="true"
+                                android:max="5"
+                                android:progressTint="#FBD057"
+                                android:rating="0"
+                                android:stepSize="1"
+                                android:scaleX="1.2"
+                                android:scaleY="1.2" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-215dp"
+                        android:src="@drawable/lemon_6"
+                        android:translationZ="100dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llMul"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="230dp"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_gravity="center"
+                        android:layout_width="158dp"
+                        android:layout_height="158dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginEnd="12dp"
+                        android:maxWidth="18dip"
+                        android:maxHeight="18dip"
+                        android:minWidth="18dip"
+                        android:minHeight="18dip"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="3dp"
+                        app:layout_constraintWidth_min="wrap">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="80dp"
+                            android:padding="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PHÉP NHÂN"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <RatingBar
+                                android:id="@+id/rtMul"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:isIndicator="true"
+                                android:max="5"
+                                android:progressTint="#FBD057"
+                                android:rating="0"
+                                android:stepSize="1"
+                                android:scaleX="1.2"
+                                android:scaleY="1.2" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-215dp"
+                        android:src="@drawable/lemon_5"
+                        android:translationZ="100dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/llDiv"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="230dp"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_gravity="center"
+                        android:layout_width="158dp"
+                        android:layout_height="158dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginEnd="12dp"
+                        android:maxWidth="18dip"
+                        android:maxHeight="18dip"
+                        android:minWidth="18dip"
+                        android:minHeight="18dip"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="3dp"
+                        app:layout_constraintWidth_min="wrap">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="80dp"
+                            android:padding="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PHÉP CHIA"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <RatingBar
+                                android:id="@+id/rtDiv"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:isIndicator="true"
+                                android:max="5"
+                                android:progressTint="#FBD057"
+                                android:rating="0"
+                                android:stepSize="1"
+                                android:scaleX="1.2"
+                                android:scaleY="1.2" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-215dp"
+                        android:src="@drawable/lemon_4"
+                        android:translationZ="100dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llSummary"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="230dp"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_gravity="center"
+                        android:layout_width="158dp"
+                        android:layout_height="158dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginEnd="12dp"
+                        android:maxWidth="18dip"
+                        android:maxHeight="18dip"
+                        android:minWidth="18dip"
+                        android:minHeight="18dip"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="3dp"
+                        app:layout_constraintWidth_min="wrap">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="80dp"
+                            android:padding="5dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TỔNG KẾT"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <RatingBar
+                                android:id="@+id/rtSummary"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:isIndicator="true"
+                                android:max="5"
+                                android:progressTint="#FBD057"
+                                android:rating="0"
+                                android:stepSize="1"
+                                android:scaleX="1.2"
+                                android:scaleY="1.2" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="-215dp"
+                        android:src="@drawable/lemon_3"
+                        android:translationZ="100dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

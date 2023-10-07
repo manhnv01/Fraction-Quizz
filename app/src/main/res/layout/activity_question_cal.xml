@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/back_yellow"
+    tools:context=".QuestionCalActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/llHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/retangle"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imvClose"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/close2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"/>
+                <com.baoyachi.stepview.HorizontalStepView
+                    android:id="@+id/step_view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerInParent="true"
+                    />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvQuestion"
+                android:layout_below="@+id/llHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+
+                android:maxWidth="18dip"
+                android:maxHeight="18dip"
+                android:minWidth="18dip"
+                android:minHeight="18dip"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:layout_constraintWidth_min="wrap"
+                android:layout_marginTop="-100dp"
+          >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/txtQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_13sdp"
+                        android:text="@string/question_cal" />
+
+                    <LinearLayout
+                        android:id="@+id/llImage"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imv1"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_90sdp"
+                            android:layout_weight="4"
+                            android:src="@drawable/a1_phan_8" />
+
+                        <TextView
+                            android:id="@+id/txtCal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_weight="1"
+                            android:textSize="@dimen/_20sdp"
+                            android:text="+" />
+
+                        <ImageView
+                            android:id="@+id/imv2"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_90sdp"
+                            android:layout_weight="4"
+                            android:src="@drawable/a3_phan_8" />
+
+                        <TextView
+                            android:id="@+id/txtEnd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/_20sdp"
+                            android:text="=  ?" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_below="@+id/cvQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioGroup"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:id="@+id/llA"
+                        android:elevation="3dp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_answer"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text=" A. "
+                            android:buttonTint="@color/button_yellow"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/radioButton"
+                            android:checked="false" />
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtAnswerA"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_13sdp"
+                                android:visibility="gone"
+                                android:padding="@dimen/_10sdp" />
+
+                            <LinearLayout
+                                android:id="@+id/llPSA"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/_5sdp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txtTs1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:text="AA"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/fraction"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_5sdp" />
+                                <TextView
+                                    android:id="@+id/txtMs1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:text="A"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llB"
+                        android:elevation="3dp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_answer"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text=" B. "
+                            android:buttonTint="@color/button_yellow"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/radioButton2"
+                            android:checked="false" />
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtAnswerB"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_13sdp"
+                                android:visibility="gone"
+                                android:padding="@dimen/_10sdp" />
+                            <LinearLayout
+                                android:id="@+id/llPSB"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/_5sdp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txtTs2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:text="AA"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_5sdp"
+                                    android:textColor="@color/black"
+                                    android:text="@string/fraction"/>
+                                <TextView
+                                    android:id="@+id/txtMs2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:text="A"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llC"
+                        android:elevation="3dp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_answer"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text=" C. "
+                            android:enabled="false"
+                            android:buttonTint="@color/button_yellow"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/radioButton3"
+                            android:checked="false" />
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtAnswerC"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_13sdp"
+                                android:visibility="gone"
+                                android:padding="@dimen/_10sdp" />
+                            <LinearLayout
+                                android:id="@+id/llPSC"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/_5sdp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txtTs3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:text="AA"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/fraction"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_5sdp" />
+                                <TextView
+                                    android:id="@+id/txtMs3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:text="A"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llD"
+                        android:elevation="3dp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/back_answer"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text=" D. "
+                            android:buttonTint="@color/button_yellow"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/radioButton4"
+                            android:checked="false" />
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtAnswerD"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_13sdp"
+                                android:visibility="gone"
+                                android:padding="@dimen/_10sdp" />
+
+                            <LinearLayout
+                                android:id="@+id/llPSD"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/_5sdp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txtTs4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:text="AA"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_5sdp"
+                                    android:textColor="@color/black"
+                                    android:text="@string/fraction"/>
+                                <TextView
+                                    android:id="@+id/txtMs4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/_15sdp"
+                                    android:text="A"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RadioGroup>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+    <ImageView
+        android:id="@+id/imvButton"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/lemon"
+        android:translationZ="100dp" />
+
+    <Button
+        android:id="@+id/btnCheck"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:text="@string/btn_text_check"
+        android:elevation="3dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:backgroundTint="@color/button_yellow"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/btnContinue"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:text="@string/btn_text_check"
+        android:elevation="3dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:backgroundTint="@color/button_green"
+        android:textColor="@color/white"/>
+</RelativeLayout>

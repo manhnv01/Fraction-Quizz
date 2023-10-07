@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Fraction Lemon Game</string>
+    <string name="btn_text_check">Kiểm tra</string>
+    <string name="btn_text_continue">Tiếp tục</string>
+    <string name="btn_text_understand">Đã hiểu</string>
+    <string name="question_cal">Chọn đáp án đúng cho phép tính dưới đây:</string>
+    <string name="go_home">Về trang chủ</string>
+    <string name="fraction">-----------------</string>
+</resources>
