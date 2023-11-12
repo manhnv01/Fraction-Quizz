@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -61,6 +62,7 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
     int flag = 0, cal;
     int number = 0;
     int marks = 0, correct = 0, wrong = 0;
+    int sum, sub, mul, div, start, summary;
 
     List<StepBean> stepsBeanList;
     @Override
@@ -244,22 +246,28 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                     marks = correct;
                     switch (cal) {
                         case 1: // Phép cộng
-                            editor.putInt("rtSum", marks);
+                            if(marks>=sum)
+                                editor.putInt("rtSum", marks);
                             break;
                         case 2: // Phép trừ
-                            editor.putInt("rtSub", marks);
+                            if(marks>=sub)
+                                editor.putInt("rtSub", marks);
                             break;
                         case 3: // Phép nhân
-                            editor.putInt("rtMul", marks);
+                            if(marks>=mul)
+                                editor.putInt("rtMul", marks);
                             break;
                         case 4: // Phép chia
-                            editor.putInt("rtDiv", marks);
+                            if(marks>=div)
+                                editor.putInt("rtDiv", marks);
                             break;
                         case 5: // Khởi động
-                            editor.putInt("rtStart", marks);
+                            if(marks>=start)
+                                editor.putInt("rtStart", marks);
                             break;
                         default: // Tổng kết
-                            editor.putInt("rtSummary", marks);
+                            if(marks>=summary)
+                                editor.putInt("rtSummary", marks);
                             break;
                     }
                     editor.apply();
@@ -340,6 +348,14 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
         llAnswerC.setOnClickListener(this);
         llAnswerD = findViewById(R.id.llD);
         llAnswerD.setOnClickListener(this);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("calculate", Context.MODE_PRIVATE);
+        sum = sharedPreferences.getInt("rtSum", 0);
+        sub = sharedPreferences.getInt("rtSub", 0);
+        mul = sharedPreferences.getInt("rtMul", 0);
+        div = sharedPreferences.getInt("rtDiv", 0);
+        start = sharedPreferences.getInt("rtStart", 0);
+        summary = sharedPreferences.getInt("rtSummary", 0);
 
         switch (cal){
             case 1: // Phép cộng

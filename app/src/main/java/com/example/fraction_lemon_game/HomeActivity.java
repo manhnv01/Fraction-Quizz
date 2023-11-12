@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout llStart, llSummary, llSum, llSub, llMul, llDiv;
     RatingBar rtStart, rtSummary, rtSum, rtSub, rtMul, rtDiv;
+    int sum, sub, mul, div, start, summary;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +24,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         getView();
         SharedPreferences sharedPreferences = getSharedPreferences("calculate", Context.MODE_PRIVATE);
-        int sum = sharedPreferences.getInt("rtSum", 0);
-        int sub = sharedPreferences.getInt("rtSub", 0);
-        int mul = sharedPreferences.getInt("rtMul", 0);
-        int div = sharedPreferences.getInt("rtDiv", 0);
-        int start = sharedPreferences.getInt("rtStart", 0);
-        int summary = sharedPreferences.getInt("rtSummary", 0);
+        sum = sharedPreferences.getInt("rtSum", 0);
+        sub = sharedPreferences.getInt("rtSub", 0);
+        mul = sharedPreferences.getInt("rtMul", 0);
+        div = sharedPreferences.getInt("rtDiv", 0);
+        start = sharedPreferences.getInt("rtStart", 0);
+        summary = sharedPreferences.getInt("rtSummary", 0);
 
         rtSum.setRating(sum);
         rtSub.setRating(sub);
@@ -65,24 +67,44 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(HomeActivity.this,QuestionCalActivity.class);
         switch (view.getId()) {
             case R.id.llSum:
-                intent.putExtra("cal",1);
+                if (start >= 3){
+                    Toast.makeText(this, "Bạn cần 3* Khởi Động!", Toast.LENGTH_SHORT).show();
+                    intent.putExtra("cal",1);
+                    startActivity(intent);
+                }
                 break;
             case R.id.llSub:
-                intent.putExtra("cal",2);
+                if (sum >= 3){
+                    Toast.makeText(this, "Bạn cần 3* Tính Tổng!", Toast.LENGTH_SHORT).show();
+                    intent.putExtra("cal",2);
+                    startActivity(intent);
+                }
                 break;
             case R.id.llMul:
-                intent.putExtra("cal",3);
+                if (sub >= 3){
+                    Toast.makeText(this, "Bạn cần 3* Tính Trừ!", Toast.LENGTH_SHORT).show();
+                    intent.putExtra("cal",3);
+                    startActivity(intent);
+                }
                 break;
             case R.id.llDiv:
-                intent.putExtra("cal",4);
+                if (mul >= 3){
+                    Toast.makeText(this, "Bạn cần 3* Tính Tích!", Toast.LENGTH_SHORT).show();
+                    intent.putExtra("cal",4);
+                    startActivity(intent);
+                }
                 break;
             case R.id.llStart:
                 intent.putExtra("cal",5);
+                startActivity(intent);
                 break;
             case R.id.llSummary:
-                intent.putExtra("cal",6);
+                if (div >= 3){
+                    Toast.makeText(this, "Bạn cần 3* Tính Thương!", Toast.LENGTH_SHORT).show();
+                    intent.putExtra("cal",6);
+                    startActivity(intent);
+                }
                 break;
         }
-        startActivity(intent);
     }
 }
