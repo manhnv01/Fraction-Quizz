@@ -68,31 +68,35 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.llSum:
                 if (start >= 3){
-                    Toast.makeText(this, "Bạn cần 3* Khởi Động!", Toast.LENGTH_SHORT).show();
                     intent.putExtra("cal",1);
                     startActivity(intent);
                 }
+                else
+                    Toast.makeText(this, "Bạn cần 3* Khởi Động!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.llSub:
                 if (sum >= 3){
-                    Toast.makeText(this, "Bạn cần 3* Tính Tổng!", Toast.LENGTH_SHORT).show();
                     intent.putExtra("cal",2);
                     startActivity(intent);
                 }
+                else
+                    Toast.makeText(this, "Bạn cần 3* Tính Tổng!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.llMul:
                 if (sub >= 3){
-                    Toast.makeText(this, "Bạn cần 3* Tính Trừ!", Toast.LENGTH_SHORT).show();
                     intent.putExtra("cal",3);
                     startActivity(intent);
                 }
+                else
+                    Toast.makeText(this, "Bạn cần 3* Tính Trừ!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.llDiv:
                 if (mul >= 3){
-                    Toast.makeText(this, "Bạn cần 3* Tính Tích!", Toast.LENGTH_SHORT).show();
                     intent.putExtra("cal",4);
                     startActivity(intent);
                 }
+                else
+                    Toast.makeText(this, "Bạn cần 3* Tính Tích!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.llStart:
                 intent.putExtra("cal",5);
@@ -100,10 +104,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.llSummary:
                 if (div >= 3){
-                    Toast.makeText(this, "Bạn cần 3* Tính Thương!", Toast.LENGTH_SHORT).show();
                     intent.putExtra("cal",6);
                     startActivity(intent);
                 }
+                else
+                    Toast.makeText(this, "Bạn cần 3* Tính Thương!", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
