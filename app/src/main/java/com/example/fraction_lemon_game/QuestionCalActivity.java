@@ -274,6 +274,7 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
 
                     Intent in = new Intent(QuestionCalActivity.this, ResultActivity.class);
                     in.putExtra("star", marks);
+                    in.putExtra("question", cal);
                     startActivity(in);
                     finish();
                 }

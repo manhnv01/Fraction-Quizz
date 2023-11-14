@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-
             android:maxWidth="18dip"
             android:maxHeight="18dip"
             android:minWidth="18dip"
@@ -31,6 +30,16 @@
             app:cardElevation="3dp"
             app:layout_constraintWidth_min="wrap"
             android:layout_marginTop="-160dp">
+
+            <ImageView
+                android:id="@+id/imvClose"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/close2"
+                android:background="@color/black"
+                android:layout_gravity="end"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,10 +80,25 @@
                     android:scaleY="1.2" />
 
                 <Button
-                    android:id="@+id/btnGoHome"
+                    android:id="@+id/btnRetry"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
-                    android:text="@string/go_home"
+                    android:text="@string/retry"
+                    android:elevation="3dp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:backgroundTint="@color/back_yellow"
+                    android:textColor="@color/button_yellow"/>
+
+                <Button
+                    android:id="@+id/btnNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:text="@string/next"
                     android:elevation="3dp"
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
