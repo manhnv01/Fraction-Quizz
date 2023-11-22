@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     LinearLayout llStart, llSummary, llSum, llSub, llMul, llDiv;
     RatingBar rtStart, rtSummary, rtSum, rtSub, rtMul, rtDiv;
+    ImageView imvSum, imvSub, imvMul, imvDiv, imvSummary;
     int sum, sub, mul, div, start, summary;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,33 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         rtSub = findViewById(R.id.rtSub);
         rtMul = findViewById(R.id.rtMul);
         rtDiv = findViewById(R.id.rtDiv);
+
+        imvSum = findViewById(R.id.imvSum);
+        imvSub = findViewById(R.id.imvSub);
+        imvMul = findViewById(R.id.imvMul);
+        imvDiv = findViewById(R.id.imvDiv);
+        imvSummary = findViewById(R.id.imvSummary);
+
+        if (start < 3)
+            imvSum.setAlpha(0.4F);
+        else
+            imvSum.setAlpha(1F);
+        if (sum < 3)
+            imvSub.setAlpha(0.4F);
+        else
+            imvSub.setAlpha(1F);
+        if (sub < 3)
+            imvMul.setAlpha(0.4F);
+        else
+            imvMul.setAlpha(1F);
+        if (mul < 3)
+            imvDiv.setAlpha(0.4F);
+        else
+            imvDiv.setAlpha(1F);
+        if (div < 3)
+            imvSummary.setAlpha(0.4F);
+        else
+            imvSummary.setAlpha(1F);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -66,41 +95,41 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Intent intent = new Intent(HomeActivity.this,QuestionCalActivity.class);
         switch (view.getId()) {
+            case R.id.llStart:
+                intent.putExtra("cal",1);
+                startActivity(intent);
+                break;
             case R.id.llSum:
                 if (start >= 3){
-                    intent.putExtra("cal",1);
-                    startActivity(intent);
-                }
-                else
-                    Toast.makeText(this, "Bạn cần 3* Khởi Động!", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.llSub:
-                if (sum >= 3){
                     intent.putExtra("cal",2);
                     startActivity(intent);
                 }
                 else
-                    Toast.makeText(this, "Bạn cần 3* Tính Tổng!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Bạn cần 3* KHỞI ĐỘNG!", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.llMul:
-                if (sub >= 3){
+            case R.id.llSub:
+                if (sum >= 3){
                     intent.putExtra("cal",3);
                     startActivity(intent);
                 }
                 else
-                    Toast.makeText(this, "Bạn cần 3* Tính Trừ!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Bạn cần 3* PHÉP CỘNG!", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.llDiv:
-                if (mul >= 3){
+            case R.id.llMul:
+                if (sub >= 3){
                     intent.putExtra("cal",4);
                     startActivity(intent);
                 }
                 else
-                    Toast.makeText(this, "Bạn cần 3* Tính Tích!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Bạn cần 3* PHÉP TRỪ!", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.llStart:
-                intent.putExtra("cal",5);
-                startActivity(intent);
+            case R.id.llDiv:
+                if (mul >= 3){
+                    intent.putExtra("cal",5);
+                    startActivity(intent);
+                }
+                else
+                    Toast.makeText(this, "Bạn cần 3* PHÉP NHÂN!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.llSummary:
                 if (div >= 3){
@@ -108,7 +137,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent);
                 }
                 else
-                    Toast.makeText(this, "Bạn cần 3* Tính Thương!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Bạn cần 3* PHÉP CHIA!", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

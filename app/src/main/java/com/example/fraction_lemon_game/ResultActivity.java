@@ -43,7 +43,7 @@ public class ResultActivity extends AppCompatActivity {
             cheer_sound.start();
         }
 
-        if(question >= 5 || star < 3){
+        if(question > 5 || star < 3){
             btnNext.setVisibility(View.GONE);
         }
         else{

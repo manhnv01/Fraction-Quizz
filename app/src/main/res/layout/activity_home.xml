@@ -149,6 +149,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <ImageView
+                        android:id="@+id/imvSum"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
                         android:layout_gravity="center"
@@ -222,6 +223,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <ImageView
+                        android:id="@+id/imvSub"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
                         android:layout_gravity="center"
@@ -289,6 +291,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <ImageView
+                        android:id="@+id/imvMul"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
                         android:layout_gravity="center"
@@ -362,6 +365,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <ImageView
+                        android:id="@+id/imvDiv"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
                         android:layout_gravity="center"
@@ -428,6 +432,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <ImageView
+                        android:id="@+id/imvSummary"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
                         android:layout_gravity="center"

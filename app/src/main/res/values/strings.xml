@@ -4,7 +4,7 @@
     <string name="btn_text_continue">Tiếp tục</string>
     <string name="btn_text_understand">Đã hiểu</string>
     <string name="question_cal">Chọn đáp án đúng cho phép tính dưới đây:</string>
-    <string name="retry">Thực hiện lại</string>
+    <string name="retry">Làm lại</string>
     <string name="fraction">-----------------</string>
-    <string name="next">Bài tiếp theo</string>
+    <string name="next">Tiếp theo</string>
 </resources>

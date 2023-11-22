@@ -17,4 +17,6 @@
     <color name="button_red">#E15F41</color>
     <color name="back_correct">#D1FED5</color>
     <color name="back_wrong">#FED1D1</color>
+    <color name="back_button_retry">#F9E17D</color>
+    <color name="back_button_next">#F56617</color>
 </resources>

@@ -24,6 +24,7 @@ import com.baoyachi.stepview.bean.StepBean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class QuestionCalActivity extends AppCompatActivity implements View.OnClickListener {
     TextView txtTS1, txtMS1, txtTS2, txtMS2, txtTS3, txtMS3, txtTS4, txtMS4, txtCal, txtEnd, txtQuestion, txtAnswerA, txtAnswerB, txtAnswerC, txtAnswerD;
@@ -33,13 +34,25 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
     RadioButton rb1,rb2,rb3,rb4;
     ImageView imv1, imv2, imvClose, imvButton;
     private HorizontalStepView mSetpview0;
+    List<Integer> array = new ArrayList<>();
     String[] images1, images2, answerTS, answerMS, optTS, optMS;
     String[] questions = {
             "Khái niệm phân số là gì?",
             "Điền dấu thích hợp vào '?' để so sánh hai phân số sau:",
             "Rút gọn phân số sau:",
             "Nêu quy tắc nhân hai phân số.",
-            "Chọn đáp án đúng cho quy tắc chia hai phân số."
+            "Chọn đáp án đúng cho quy tắc chia hai phân số.",
+            "Điền dấu thích hợp vào '?' để so sánh hai phân số sau:",
+            "Hình ảnh sau là thể hiện của phân số nào?",
+    };
+    String[] questionsSummary = {
+            "Chọn đáp án đúng cho phép tính dưới đây:",
+            "Chọn đáp án đúng cho quy tắc chia hai phân số?",
+            "Chọn đáp án đúng cho phép tính dưới đây:",
+            "Chọn đáp án đúng cho phép tính dưới đây:",
+            "Chọn đáp án đúng cho phép tính dưới đây:",
+            "Điền dấu thích hợp vào '?' để so sánh hai phân số sau:",
+            "Hình ảnh sau là thể hiện của phân số nào?",
     };
     String[] opt = {
             "Phân số là sự biểu diễn của hai số hữu tỉ dưới dạng tỉ lệ của hai số nguyên, trong đó số nguyên ở trên được gọi là tử số, còn số nguyên ở dưới được gọi là mẫu số. Điều kiện bắt buộc là mẫu số phải khác số 0.",
@@ -55,11 +68,14 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
             "Muốn chia hai phân số ta lấy tử số chia tử số, mẫu số chia với mẫu số.",
             "Muốn chia hai phân số, ta lấy phân số thứ nhất nhân với phân số thứ hai đảo ngược.",
             "Muốn chia hai phân số, ta lấy phân số thứ hai nhân với phân số thứ nhất đảo ngược.",
-            "Đáp án khác"
+            "Đáp án khác",
+            "=","<=",">","<",
+            "import","this","catch","abstract",
+
     };
-    String[] cals = {"+", "x", "x", ":", "-"};
+    String[] cals = {"+", "x", "x", ":", "-","?","x"};
     SharedPreferences sharedPreferences;
-    int flag = 0, cal;
+    int flag = 0, dem = 0, cal;
     int number = 0;
     int marks = 0, correct = 0, wrong = 0;
     int sum, sub, mul, div, start, summary;
@@ -148,7 +164,7 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                     llAnswer.setBackgroundResource(R.drawable.back_answer_correct);
 
                     StepBean newStepBean1 = new StepBean("", 1);
-                    stepsBeanList.set(flag, newStepBean1);
+                    stepsBeanList.set(dem, newStepBean1);
                 }
                 else {
                     wrong++;
@@ -159,7 +175,7 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                     btnContinue.setBackgroundColor(ContextCompat.getColor(QuestionCalActivity.this, R.color.button_red));
                     llAnswer.setBackgroundResource(R.drawable.back_answer_wrong);
                     StepBean newStepBean1 = new StepBean("", 0);
-                    stepsBeanList.set(flag, newStepBean1);
+                    stepsBeanList.set(dem, newStepBean1);
                 }
                 mSetpview0.setStepViewTexts(stepsBeanList)
                         .setTextSize(12)//set textSize
@@ -171,7 +187,20 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                         .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(QuestionCalActivity.this, R.drawable.next))//设置StepsViewIndicator DefaultIcon
                         .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(QuestionCalActivity.this, R.drawable.multiply));//设置StepsViewIndicator AttentionIcon
 
-                flag++;
+                //flag++;
+
+                //
+                array.add(1);
+                Random random = new Random();
+                int randomNumber = random.nextInt(7);
+
+                while (checkDuplicate(randomNumber, array)){
+                    randomNumber = random.nextInt(7);
+                }
+                array.add(flag);
+                flag = randomNumber;
+                dem++;
+                //
             }
         });
 
@@ -194,36 +223,88 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                 imvButton.setImageResource(R.drawable.lemon);
                 enable();
                 enableRB();
-                if(flag < 5)
+                if(dem < 5)
                 {
                     if(cal == 6 && flag == 1){
                         llImage.setVisibility(View.GONE);
 
                         setVisibleAnswerTxt();
                         setGoneAnswerPs();
+                        txtCal.setText(cals[flag]);
+                        txtEnd.setVisibility(View.VISIBLE);
 
                         txtTS2.setText(optTS[flag*4 +1]);
                         txtMS2.setText(optMS[flag*4 +1]);
 
-                        txtQuestion.setText("Chọn đáp án đúng cho quy tắc chia hai phân số?");
+                        txtQuestion.setText(questionsSummary[flag]);
                         txtAnswerA.setText("Muốn chia hai phân số ta lấy tử số nhân chia tử số, mẫu số chia với mẫu số.");
                         txtAnswerB.setText("Muốn chia hai phân số, ta lấy phân số thứ nhất nhân với phân số thứ hai đảo ngược.");
                         txtAnswerC.setText("Muốn chia hai phân số,ta lấy phân số thứ hai nhân với phân số thứ nhất đảo ngược.");
                         txtAnswerD.setText("Đáp án khác");
-                    } else if (cal == 5 && flag == 0 || (cal == 5 && flag == 3) || (cal == 5 && flag == 4)) {
+
+                    }
+                    else if(cal == 6 && flag == 5){
+                        llImage.setVisibility(View.VISIBLE);
+                        imv2.setVisibility(View.VISIBLE);
+                        txtCal.setVisibility(View.VISIBLE);
+
+                        setVisibleAnswerTxt();
+                        setGoneAnswerPs();
+                        txtCal.setText(cals[flag]);
+                        txtEnd.setVisibility(View.GONE);
+
+                        txtQuestion.setText(questionsSummary[flag]);
+                        txtAnswerA.setText("<");
+                        txtAnswerB.setText("=");
+                        txtAnswerC.setText("<=");
+                        txtAnswerD.setText(">");
+
+                        setTextQuestion();
+
+                    }else if(cal == 6 && flag == 6){
+                        llImage.setVisibility(View.VISIBLE);
+                        imv2.setVisibility(View.GONE);
+                        txtCal.setVisibility(View.GONE);
+
+                        setGoneAnswerTxt();
+                        setVisibleAnswerPs();
+                        txtEnd.setVisibility(View.GONE);
+
+                        txtQuestion.setText(questionsSummary[flag]);
+
+                        setTextQuestion();
+
+                    }else if (cal == 1 && flag == 0 || (cal == 1 && flag == 3) || (cal == 1 && flag == 4)) {
                         llImage.setVisibility(View.GONE);
                         setVisibleAnswerTxt();
                         setGoneAnswerPs();
                         setTextQuestion();
                         setTextQuestionTheory();
-                    } else if (cal == 5 && flag == 1) {
+                    } else if (cal == 1 && flag == 1) {
                         llImage.setVisibility(View.VISIBLE);
+                        imv2.setVisibility(View.VISIBLE);
                         txtCal.setVisibility(View.VISIBLE);
                         setVisibleAnswerTxt();
                         setGoneAnswerPs();
                         setTextQuestion();
                         setTextQuestionTheory();
-                    } else if (cal == 5 && flag == 2) {
+                    }else if (cal == 1 && flag == 5) {
+                        llImage.setVisibility(View.VISIBLE);
+                        imv2.setVisibility(View.VISIBLE);
+                        txtCal.setVisibility(View.VISIBLE);
+                        setVisibleAnswerTxt();
+                        setGoneAnswerPs();
+                        setTextQuestion();
+                        setTextQuestionTheory();
+                    }else if (cal == 1 && flag == 2) {
+                        txtQuestion.setText(questions[flag]);
+                        setGoneAnswerTxt();
+                        setVisibleAnswerPs();
+                        setTextQuestion();
+                        llImage.setVisibility(View.VISIBLE);
+                        txtCal.setVisibility(View.GONE);
+                        imv2.setVisibility(View.GONE);
+                    }else if (cal == 1 && flag == 6) {
                         txtQuestion.setText(questions[flag]);
                         setGoneAnswerTxt();
                         setVisibleAnswerPs();
@@ -236,34 +317,39 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                         llImage.setVisibility(View.VISIBLE);
                         setGoneAnswerTxt();
                         setVisibleAnswerPs();
-                        if(cal == 6)
+                        if(cal == 6){
                             txtCal.setText(cals[flag]);
+                            txtCal.setVisibility(View.VISIBLE);
+                            txtEnd.setVisibility(View.VISIBLE);
+                            imv2.setVisibility(View.VISIBLE);
+                        }
                         setTextQuestion();
                     }
                 }
                 else
                 {
+                    array.clear();
                     marks = correct;
                     switch (cal) {
-                        case 1: // Phép cộng
+                        case 1: // Khởi động
+                            if(marks>=start)
+                                editor.putInt("rtStart", marks);
+                            break;
+                        case 2: // Phép cộng
                             if(marks>=sum)
                                 editor.putInt("rtSum", marks);
                             break;
-                        case 2: // Phép trừ
+                        case 3: // Phép trừ
                             if(marks>=sub)
                                 editor.putInt("rtSub", marks);
                             break;
-                        case 3: // Phép nhân
+                        case 4: // Phép nhân
                             if(marks>=mul)
                                 editor.putInt("rtMul", marks);
                             break;
-                        case 4: // Phép chia
+                        case 5: // Phép chia
                             if(marks>=div)
                                 editor.putInt("rtDiv", marks);
-                            break;
-                        case 5: // Khởi động
-                            if(marks>=start)
-                                editor.putInt("rtStart", marks);
                             break;
                         default: // Tổng kết
                             if(marks>=summary)
@@ -359,130 +445,154 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
         summary = sharedPreferences.getInt("rtSummary", 0);
 
         switch (cal){
-            case 1: // Phép cộng
-                images1 = new String[] {"a1_phan_8","a2_phan_8","a4_phan_8","a7_phan_8","a2_phan_8"};
-                images2 = new String[] {"a3_phan_8","a7_phan_8","a2_phan_8","a4_phan_8","a5_phan_8"};
-                answerTS = new String[] {"1","9","3","11","7"};
-                answerMS = new String[] {"2","8","4","8","8"};
-                optTS = new String[] {
-                        "1","7","6","5",
-                        "9","3","5","7",
-                        "6","3","10","3",
-                        "5","11","1","9",
-                        "5","6","7","9"
-                };
-                optMS = new String[] {
-                        "2","8","8","8",
-                        "8","8","8","8",
-                        "4","8","8","4",
-                        "4","8","2","8",
-                        "4","8","8","8"
-                };
-                txtCal.setText("+");
-                break;
-            case 2: // Phép trừ
-                images1 = new String[] {"a8_phan_8","a3_phan_8","a6_phan_8","a7_phan_8","a4_phan_8"};
-                images2 = new String[] {"a1_phan_8","a2_phan_8","a3_phan_8","a2_phan_8","a6_phan_8"};
-                answerTS = new String[] {"7","1","3","5","-1"};
-                answerMS = new String[] {"8","8","8","8","4"};
-                optTS = new String[] {
-                        "1","7","6","5",
-                        "1","3","5","7",
-                        "5","3","10","3",
-                        "5","11","3","9",
-                        "1","11","3","-1"
-                };
-                optMS = new String[] {
-                        "8","8","8","8",
-                        "8","4","7","8",
-                        "4","8","8","4",
-                        "8","8","4","8",
-                        "4","8","4","4"
-                };
-                txtCal.setText("-");
-                break;
-            case 3: // Phép nhân
-                images1 = new String[] {"layer8","tao_2_tren_3","dua_6_tren_8","a2_phan_8","layer5"};
-                images2 = new String[] {"dua_1_tren_8","chanh_2_tren_4","chanh_1_tren_4","chanh_3_tren_4","duahau_3_tren_6"};
-                answerTS = new String[] {"1","1","3","3","1"};
-                answerMS = new String[] {"8","3","16","16","2"};
-                optTS = new String[] {
-                        "1","7","6","5",
-                        "1","1","5","7",
-                        "5","3","3","3",
-                        "3","11","3","9",
-                        "1","1","3","7"
-                };
-                optMS = new String[] {
-                        "8","8","8","8",
-                        "2","3","7","8",
-                        "4","16","18","4",
-                        "16","8","4","8",
-                        "4","2","4","8"
-                };
-                txtCal.setText("x");
-                break;
-            case 4: // Phép chia
-                images1 = new String[] {"layer4","tao_2_tren_3","dua_6_tren_8","duahau_4_tren_6","tao_1_tren_3"};
-                images2 = new String[] {"layer6","duahau_3_tren_6","tao_1_tren_3","chanh_3_tren_4","layer5"};
-                answerTS = new String[] {"1","4","9","8","1"};
-                answerMS = new String[] {"2","3","4","9","3"};
-                optTS = new String[] {
-                        "1","6","1","5",
-                        "4","5","8","7",
-                        "5","15","3","9",
-                        "3","11","3","8",
-                        "1","1","3","7"
-                };
-                optMS = new String[] {
-                        "4","8","2","8",
-                        "3","6","3","8",
-                        "4","16","18","4",
-                        "16","8","4","9",
-                        "7","3","4","8"
-                };
-                txtCal.setText(":");
-                break;
-            case 5: // Khởi động
-                images1 = new String[] {"tao_2_tren_3","duahau_5_tren_6","dua_5_tren_8_1","duahau_4_tren_6","tao_1_tren_3"};
-                images2 = new String[] {"layer6","duahau_4_tren_6","tao_1_tren_3","chanh_3_tren_4","layer5"};
-                answerTS = new String[] {"1","2","1","4","5"};
-                answerMS = new String[] {"1","2","2","4","5"};
+            case 1: // Khởi động
+                images1 = new String[] {"tao_2_tren_3","duahau_5_tren_6","dua_5_tren_8_1","duahau_4_tren_6","tao_1_tren_3","tao_2_tren_3","dua_6_tren_8"};
+                images2 = new String[] {"layer6","duahau_4_tren_6","tao_1_tren_3","chanh_3_tren_4","layer5","duahau_5_tren_6","dua_6_tren_8"};
+                answerTS = new String[] {"1","2","1","4","5","6","3"};
+                answerMS = new String[] {"1","2","2","4","5","6","4"};
                 optTS = new String[] {
                         "1","9","9","9",
                         "2","9","9","9",
                         "2","1","3","4",
                         "4","9","9","9",
-                        "9","5","9","9"
+                        "9","5","9","9",
+                        "4","9","9","6",
+                        "1","3","5","3"
                 };
                 optMS = new String[] {
                         "1","9","9","9",
                         "2","9","9","9",
                         "3","2","2","3",
                         "4","9","9","9",
-                        "9","5","9","9"
+                        "9","5","9","9",
+                        "4","9","9","6",
+                        "2","4","4","2"
                 };
                 txtCal.setText("?");
                 txtEnd.setVisibility(View.GONE);
                 break;
+            case 2: // Phép cộng
+                images1 = new String[] {"a1_phan_8","a2_phan_8","a4_phan_8","a7_phan_8","a2_phan_8","chanh_2_tren_4","a3_phan_8"};
+                images2 = new String[] {"a3_phan_8","a7_phan_8","a2_phan_8","a4_phan_8","a5_phan_8", "dauhau_1_tren_6","dua_2_tren_8"};
+                answerTS = new String[] {"1","9","3","11","7","2","5"};
+                answerMS = new String[] {"2","8","4","8","8","3","8"};
+                optTS = new String[] {
+                        "1","7","6","5",
+                        "9","3","5","7",
+                        "6","3","10","3",
+                        "5","11","1","9",
+                        "5","6","7","9",
+                        "3","5","3","2",
+                        "7","3","5","1"
+                };
+                optMS = new String[] {
+                        "2","8","8","8",
+                        "8","8","8","8",
+                        "4","8","8","4",
+                        "4","8","2","8",
+                        "4","8","8","8",
+                        "2","6","4","3",
+                        "8","4","8","4"
+                };
+                txtCal.setText("+");
+                break;
+            case 3: // Phép trừ
+                images1 = new String[] {"a8_phan_8","a3_phan_8","a6_phan_8","a7_phan_8","a4_phan_8","duahau_5_tren_6","dua_3_tren_8"};
+                images2 = new String[] {"a1_phan_8","a2_phan_8","a3_phan_8","a2_phan_8","a6_phan_8","chanh_3_tren_4","chanh_1_tren_4"};
+                answerTS = new String[] {"7","1","3","5","-1","1","1"};
+                answerMS = new String[] {"8","8","8","8","4","12","8"};
+                optTS = new String[] {
+                        "1","7","6","5",
+                        "1","3","5","7",
+                        "5","3","10","3",
+                        "5","11","3","9",
+                        "1","11","3","-1",
+                        "-1","3","1","-3",
+                        "3","1","-3","-1"
+                };
+                optMS = new String[] {
+                        "8","8","8","8",
+                        "8","4","7","8",
+                        "4","8","8","4",
+                        "8","8","4","8",
+                        "4","8","4","4",
+                        "12","12","12","12",
+                        "8","8","4","4"
+                };
+                txtCal.setText("-");
+                break;
+            case 4: // Phép nhân
+                images1 = new String[] {"layer8","tao_2_tren_3","dua_6_tren_8","a2_phan_8","layer5","tao_1_tren_3","duahau_5_tren_6"};
+                images2 = new String[] {"dua_1_tren_8","chanh_2_tren_4","chanh_1_tren_4","chanh_3_tren_4","duahau_3_tren_6","a4_phan_8","dua_2_tren_8"};
+                answerTS = new String[] {"1","1","3","3","1","1","5"};
+                answerMS = new String[] {"8","3","16","16","2","6","24"};
+                optTS = new String[] {
+                        "1","7","6","5",
+                        "1","1","5","7",
+                        "5","3","3","3",
+                        "3","11","3","9",
+                        "1","1","3","7",
+                        "1","5","1","2",
+                        "1","5","1","5"
+                };
+                optMS = new String[] {
+                        "8","8","8","8",
+                        "2","3","7","8",
+                        "4","16","18","4",
+                        "16","8","4","8",
+                        "4","2","4","8",
+                        "6","6","3","3",
+                        "12","12","8","24"
+                };
+                txtCal.setText("x");
+                break;
+            case 5: // Phép chia
+                images1 = new String[] {"layer4","tao_2_tren_3","dua_6_tren_8","duahau_4_tren_6","tao_1_tren_3","dua_2_tren_8","a7_phan_8"};
+                images2 = new String[] {"layer6","duahau_3_tren_6","tao_1_tren_3","chanh_3_tren_4","layer5","tao_2_tren_3","duahau_2_tren_6"};
+                answerTS = new String[] {"1","4","9","8","1","3","21"};
+                answerMS = new String[] {"2","3","4","9","3","8","8"};
+                optTS = new String[] {
+                        "1","6","1","5",
+                        "4","5","8","7",
+                        "5","15","3","9",
+                        "3","11","3","8",
+                        "1","1","3","7",
+                        "3","15","5","7",
+                        "42","21","3","7"
+                };
+                optMS = new String[] {
+                        "4","8","2","8",
+                        "3","6","3","8",
+                        "4","16","18","4",
+                        "16","8","4","9",
+                        "7","3","4","8",
+                        "8","8","16","16",
+                        "16","8","4","7"
+                };
+                txtCal.setText(":");
+                break;
             default: // Tổng kết
-                images1 = new String[] {"a7_phan_8", "tao_1_tren_3", "layer5","tao_1_tren_3","a6_phan_8"};
-                images2 = new String[] {"a3_phan_8","duahau_3_tren_6","duahau_3_tren_6","layer6","a3_phan_8"};
-                answerTS = new String[] {"5","4","1","1","3"};
-                answerMS = new String[] {"4","3","2","3","8"};
+                images1 = new String[] {"a7_phan_8", "tao_1_tren_3", "layer5","tao_1_tren_3","a6_phan_8","chanh_3_tren_4","tao_2_tren_3"};
+                images2 = new String[] {"a3_phan_8","duahau_3_tren_6","duahau_3_tren_6","layer6","a3_phan_8","a2_phan_8","tao_2_tren_3"};
+                answerTS = new String[] {"5","4","1","1","3","5","2"};
+                answerMS = new String[] {"4","3","2","3","8","5","3"};
                 optTS = new String[] {
                         "5","11","1","9",
                         "2","4","8","7",
                         "1","1","3","7",
                         "1","6","1","5",
-                        "5","3","10","3"
+                        "5","3","10","3",
+                        "1","6","1","5",
+                        "4","3","2","1"
                 };
                 optMS = new String[] {
                         "4","8","2","8",
                         "8","3","1","8",
                         "4","2","4","8",
                         "4","8","3","8",
-                        "4","8","8","4"
+                        "4","8","8","4",
+                        "6","5","3","5",
+                        "3","4","3","3"
                 };
                 txtCal.setText("+");
                 break;
@@ -490,7 +600,7 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
 
         setTextQuestion();
 
-        if(cal == 5){
+        if(cal == 1){
             llImage.setVisibility(View.GONE);
             setTextQuestionTheory();
             setVisibleAnswerTxt();
@@ -620,5 +730,13 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
         llPSB.setVisibility(View.GONE);
         llPSC.setVisibility(View.GONE);
         llPSD.setVisibility(View.GONE);
+    }
+    public boolean checkDuplicate(int number, List<Integer> array) {
+        for (int index : array) {
+            if (index == number) {
+                return true;
+            }
+        }
+        return false;
     }
 }
