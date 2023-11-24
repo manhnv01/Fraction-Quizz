@@ -473,9 +473,9 @@ public class QuestionCalActivity extends AppCompatActivity implements View.OnCli
                 break;
             case 2: // Phép cộng
                 images1 = new String[] {"a1_phan_8","a2_phan_8","a4_phan_8","a7_phan_8","a2_phan_8","chanh_2_tren_4","a3_phan_8"};
-                images2 = new String[] {"a3_phan_8","a7_phan_8","a2_phan_8","a4_phan_8","a5_phan_8", "dauhau_1_tren_6","dua_2_tren_8"};
-                answerTS = new String[] {"1","9","3","11","7","2","5"};
-                answerMS = new String[] {"2","8","4","8","8","3","8"};
+                images2 = new String[] {"a3_phan_8","a7_phan_8","a2_phan_8","a4_phan_8","a5_phan_8", "dua_2_tren_8","dua_2_tren_8"};
+                answerTS = new String[] {"1","9","3","11","7","3","5"};
+                answerMS = new String[] {"2","8","4","8","8","4","8"};
                 optTS = new String[] {
                         "1","7","6","5",
                         "9","3","5","7",

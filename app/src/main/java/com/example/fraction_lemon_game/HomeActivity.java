@@ -33,6 +33,27 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         start = sharedPreferences.getInt("rtStart", 0);
         summary = sharedPreferences.getInt("rtSummary", 0);
 
+        if (start < 3)
+            imvSum.setAlpha(0.4F);
+        else
+            imvSum.setAlpha(1F);
+        if (sum < 3)
+            imvSub.setAlpha(0.4F);
+        else
+            imvSub.setAlpha(1F);
+        if (sub < 3)
+            imvMul.setAlpha(0.4F);
+        else
+            imvMul.setAlpha(1F);
+        if (mul < 3)
+            imvDiv.setAlpha(0.4F);
+        else
+            imvDiv.setAlpha(1F);
+        if (div < 3)
+            imvSummary.setAlpha(0.4F);
+        else
+            imvSummary.setAlpha(1F);
+
         rtSum.setRating(sum);
         rtSub.setRating(sub);
         rtMul.setRating(mul);
@@ -67,27 +88,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         imvMul = findViewById(R.id.imvMul);
         imvDiv = findViewById(R.id.imvDiv);
         imvSummary = findViewById(R.id.imvSummary);
-
-        if (start < 3)
-            imvSum.setAlpha(0.4F);
-        else
-            imvSum.setAlpha(1F);
-        if (sum < 3)
-            imvSub.setAlpha(0.4F);
-        else
-            imvSub.setAlpha(1F);
-        if (sub < 3)
-            imvMul.setAlpha(0.4F);
-        else
-            imvMul.setAlpha(1F);
-        if (mul < 3)
-            imvDiv.setAlpha(0.4F);
-        else
-            imvDiv.setAlpha(1F);
-        if (div < 3)
-            imvSummary.setAlpha(0.4F);
-        else
-            imvSummary.setAlpha(1F);
     }
 
     @SuppressLint("NonConstantResourceId")
